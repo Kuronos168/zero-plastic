@@ -1,32 +1,36 @@
-# ♻️ Zero Plastic – Peta Tempat Setor Sampah Plastik
+# Unplastic the Plastic
 
-Situs sederhana untuk kampanye sosial pelajar **Zero Plastic**. Pengunjung menekan
-tombol **"Cari tempat terdekat"**, mengizinkan akses lokasi, lalu situs langsung
-menampilkan **3 tempat setor sampah plastik terdekat** (bank sampah, TPS3R,
-pengepul) lengkap dengan jarak, jenis plastik yang diterima, jam buka, dan tombol
-**"Arahkan"** ke Google Maps.
+**#unplastictheplastic** – situs kampanye sosial pelajar untuk mencari tempat setor
+sampah plastik terdekat **di Surabaya**. Pengunjung menekan tombol
+**"Cari tempat terdekat"**, mengizinkan akses lokasi, lalu situs menampilkan
+**3 tempat terdekat** (bank sampah, TPS3R, pusat daur ulang, drop box) lengkap
+dengan jarak, jenis plastik yang diterima, jam buka, dan tombol
+**"Rute di Google Maps"**.
 
-> ⚠️ **Data saat ini masih CONTOH.** Semua lokasi di `data/lokasi.json` berawalan
-> `[CONTOH]` dan bukan tempat sungguhan. Ganti dengan data yang sudah dicek
-> sebelum situs disebarkan.
+> ℹ️ **Sumber data.** 40 lokasi di `data/lokasi.json` dikumpulkan dari situs resmi
+> Pemkot/DLH, berita, direktori bank sampah, dan OpenStreetMap (link sumbernya ada di
+> kolom `sumber`). Tim memutuskan menandai semuanya `"terverifikasi": true` karena
+> tidak bisa mengecek satu per satu ke lapangan. Situs tetap mengingatkan pengunjung
+> untuk menghubungi tempatnya sebelum datang. Lihat [Catatan data](#catatan-data).
 
 ## Fitur
 
-- 📍 Cari otomatis tempat terdekat dari lokasi pengunjung.
-- 🧴 Filter jenis plastik (PET, HDPE, kresek, dll.). Kalau dipilih, hanya tempat
-  yang menerima jenis itu yang diurutkan.
-- 🗺️ Peta (Leaflet + OpenStreetMap), tempat terbaik ditandai ★.
-- 👆 Kalau izin lokasi ditolak, pengunjung bisa **mengetuk peta** untuk menandai posisinya.
-- 🔎 Kalau tempat terdekat lebih dari 25 km, situs memberi tahu dengan jujur dan
+- Cari otomatis tempat terdekat dari lokasi pengunjung.
+- Filter jenis plastik (botol PET, HDPE, gelas PP, kresek, dll.). Kalau dipilih,
+  hanya tempat yang menerima jenis itu yang diurutkan.
+- Peta dengan 4 pilihan tampilan: **Standar, Terang, Gelap, Satelit**.
+  Tempat terbaik ditandai angka 1 berbingkai emas.
+- Kalau izin lokasi ditolak, pengunjung bisa **mengetuk peta** untuk menandai posisinya.
+- Kalau tempat terdekat lebih dari 25 km, situs memberi tahu dengan jujur dan
   menawarkan pencarian "bank sampah" di Google Maps.
-- 🔒 Lokasi pengunjung hanya diproses di browser, **tidak disimpan** dan tidak dikirim ke mana pun.
+- Lokasi pengunjung hanya diproses di browser, **tidak disimpan** dan tidak dikirim ke mana pun.
 - Gratis: tanpa server, tanpa API berbayar, tanpa API key.
 
 ## Isi folder
 
 ```
 index.html          Halaman utama
-style.css           Tampilan (warna, ukuran)
+style.css           Tampilan (warna, huruf, ukuran – warna utama ada di bagian :root)
 app.js              Logika: hitung jarak, peta, kartu hasil
 data/lokasi.json    DAFTAR LOKASI ← file yang paling sering diubah
 .nojekyll           Supaya GitHub Pages menyajikan file apa adanya
@@ -50,6 +54,8 @@ Semua lokasi ada di **`data/lokasi.json`**. File ini berisi daftar yang diapit
   "plastik_diterima": ["PET", "HDPE", "PP", "kresek"],
   "jam_buka": "Sabtu 08.00–11.00",
   "kontak": "0812-xxxx-xxxx (Bu Ani)",
+  "tujuan_gmaps": "Bank Sampah Melati, Gubeng, Surabaya",
+  "sumber": ["https://contoh-berita.com/bank-sampah-melati"],
   "terverifikasi": true
 }
 ```
@@ -60,11 +66,13 @@ Semua lokasi ada di **`data/lokasi.json`**. File ini berisi daftar yang diapit
 | `nama` | ya | Nama tempat. |
 | `lat`, `lng` | ya | Koordinat (angka, **tanpa tanda kutip**, pakai titik bukan koma). Di Surabaya/Sidoarjo `lat` selalu **minus** (sekitar `-7.xxx`) dan `lng` sekitar `112.xxx`. |
 | `alamat` | ya | Alamat lengkap. |
-| `jenis` | ya | Misalnya `"bank sampah"`, `"TPS3R"`, `"pengepul"`. |
+| `jenis` | ya | Misalnya `"bank sampah"`, `"TPS3R"`, `"pusat daur ulang"`, `"drop box"`, `"waste station"`, `"tukar botol Suroboyo Bus"`, `"pengepul"`. |
 | `plastik_diterima` | ya | Daftar jenis plastik. Pakai nama yang sudah ada supaya filternya menyatu: `"PET"`, `"HDPE"`, `"PP"`, `"kresek"`, `"sachet"`, `"styrofoam"`. Jenis baru otomatis muncul sebagai filter. |
 | `jam_buka` | ya | Teks bebas, misalnya `"Senin–Jumat 08.00–15.00"`. |
 | `kontak` | tidak | Nomor/IG/email. Boleh dihapus kalau tidak ada. **Pastikan pemiliknya setuju kontaknya ditampilkan.** |
-| `terverifikasi` | ya | `true` kalau tim sudah memastikan tempatnya ada & menerima plastik, `false` kalau belum. |
+| `tujuan_gmaps` | tidak | Teks yang dicari Google Maps saat tombol "Rute" ditekan (nama + alamat). Isi ini kalau koordinatnya masih **perkiraan**, supaya Google Maps mengarahkan ke tempat yang benar. Kalau kosong, rute memakai `lat`,`lng`. |
+| `sumber` | ya | Daftar link tempat info ini ditemukan, supaya tim bisa menelusurinya. |
+| `terverifikasi` | ya | `true` kalau tim menerima data ini (saat ini: semua data dari sumber publik), `false` untuk menampilkan label "Belum dicek". |
 
 ### Cara mendapatkan koordinat dari Google Maps
 
@@ -93,11 +101,23 @@ Semua lokasi ada di **`data/lokasi.json`**. File ini berisi daftar yang diapit
 - Kalau ragu, tempel seluruh isi file ke [jsonlint.com](https://jsonlint.com) untuk dicek.
 - Kalau situs menampilkan "Data lokasi gagal dimuat", hampir pasti ada salah ketik di `lokasi.json`.
 
-### Mengganti data contoh
+### Catatan data
 
-Lokasi berawalan `[CONTOH]` hanyalah data percobaan. Hapus semuanya setelah ada
-data sungguhan. Situs otomatis menampilkan peringatan di bawah halaman selama
-masih ada lokasi dengan `"terverifikasi": false`.
+Semua lokasi diambil dari sumber publik (November 2026) dan **tidak dicek ke
+lapangan**. Hal yang perlu diketahui kalau ada laporan dari pengunjung:
+
+| Kelompok | Jumlah | Catatan |
+|---|---|---|
+| Bank sampah induk (Menur, Kantor DLH, Sukomanunggal) | 3 | Menur buka Senin–Sabtu. Titik Menur dan Sukomanunggal perkiraan (di jalannya). |
+| Bank sampah unit (RT/RW) | 13 | Dari direktori dan berita 2019–2023. Banyak yang mungkin khusus warga sekitar. Beberapa titik hanya di tengah kelurahan. |
+| TPS3R & pusat daur ulang | 12 | Nama dari Keputusan Wali Kota 2025. Titik kebanyakan di tengah kelurahan. TPS3R terutama mengolah sampah yang diangkut petugas. |
+| Drop box plastik PLN di taman | 4 | Bungkul, Apsari, Harmoni, Sejarah (Juli–Oktober 2025). |
+| Waste station Rekosistem | 3 | Info 2021, bisa saja sudah tutup. |
+| Pos tukar botol Suroboyo Bus | 5 | Botol ditukar tiket bus; aturan dan lokasinya pernah berubah (2022–2023). |
+
+Lokasi yang titiknya perkiraan punya kolom `tujuan_gmaps`, jadi tombol "Rute"
+tetap mencari nama tempatnya di Google Maps. Kalau ada laporan tempat tutup atau
+salah lokasi, perbaiki atau hapus entrinya di `lokasi.json`.
 
 ## Rencana: lokasi kiriman masyarakat (belum dibuat)
 
@@ -135,6 +155,13 @@ atau situs `https://` (GitHub Pages sudah `https`).
 ## Catatan
 
 - Jarak dihitung **garis lurus**, bukan jarak tempuh jalan.
-- Peta © kontributor [OpenStreetMap](https://www.openstreetmap.org/copyright).
+- Peta: © kontributor [OpenStreetMap](https://www.openstreetmap.org/copyright)
+  (Standar) dan Esri (Terang, Gelap, Satelit). Semua gratis tanpa API key untuk
+  kampanye non-komersial seperti ini.
+- **Kenapa tidak pakai peta Google Maps langsung?** Menampilkan peta Google di
+  situs wajib memakai API key Google (perlu akun penagihan), padahal repo ini
+  publik dan harus gratis. Jadi peta di situs memakai OpenStreetMap/Esri, sedangkan
+  tombol **"Rute di Google Maps"** tetap membuka Google Maps untuk navigasi.
+- Huruf: Fraunces & Plus Jakarta Sans dari Google Fonts.
 - Jika dibuka dari aplikasi Instagram dan lokasi tidak terdeteksi, buka lewat
   Chrome/Safari (menu ⋯ → Buka di browser), atau ketuk peta untuk menandai posisi.

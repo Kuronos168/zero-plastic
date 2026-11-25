@@ -1,5 +1,6 @@
 /*
- * Zero Plastic – pencari tempat setor sampah plastik terdekat.
+ * Unplastic the Plastic (#unplastictheplastic)
+ * Pencari tempat setor sampah plastik terdekat di Surabaya.
  *
  * Alur singkat:
  * 1. Data lokasi dibaca dari data/lokasi.json.
@@ -13,21 +14,59 @@
 // ===== Pengaturan (aman diubah) =====
 const PENGATURAN = {
   fileData: "data/lokasi.json",
-  pusatAwal: [-7.2575, 112.7521], // Surabaya
+  pusatAwal: [-7.2655, 112.7522], // Surabaya
   zoomAwal: 12,
   jumlahHasil: 3,
-  batasJauhKm: 25
+  batasJauhKm: 25,
+  gayaPetaAwal: "standar"
 };
 
 // Nama tampilan untuk jenis plastik. Jenis yang tidak ada di sini tetap
 // muncul sebagai filter dengan nama aslinya dari lokasi.json.
 const LABEL_PLASTIK = {
-  PET: "PET (botol minum)",
-  HDPE: "HDPE (botol sampo, galon)",
-  PP: "PP (gelas plastik, tutup botol)",
+  PET: "Botol minum (PET)",
+  HDPE: "Botol sampo (HDPE)",
+  PP: "Gelas & tutup (PP)",
   kresek: "Kresek",
-  sachet: "Sachet / bungkus",
+  sachet: "Sachet",
   styrofoam: "Styrofoam"
+};
+
+// Pilihan tampilan peta. Semuanya gratis dan tanpa API key.
+// Setiap gaya bisa terdiri dari beberapa lapisan (misalnya peta dasar + nama jalan).
+const ESRI = "https://server.arcgisonline.com/ArcGIS/rest/services/";
+const ATRIBUSI_ESRI = 'Peta &copy; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
+const GAYA_PETA = {
+  standar: {
+    label: "Standar",
+    lapisan: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+    opsi: { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>' }
+  },
+  terang: {
+    label: "Terang",
+    lapisan: [ESRI + "Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+              ESRI + "Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}"],
+    opsi: { maxNativeZoom: 16, maxZoom: 19, attribution: ATRIBUSI_ESRI }
+  },
+  gelap: {
+    label: "Gelap",
+    lapisan: [ESRI + "Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+              ESRI + "Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}"],
+    opsi: { maxNativeZoom: 16, maxZoom: 19, attribution: ATRIBUSI_ESRI }
+  },
+  satelit: {
+    label: "Satelit",
+    lapisan: [ESRI + "World_Imagery/MapServer/tile/{z}/{y}/{x}"],
+    opsi: { maxZoom: 19, attribution: "Citra &copy; Esri, Maxar, Earthstar Geographics" }
+  }
+};
+
+// Ikon garis sederhana (SVG), dipakai di kartu.
+const IKON = {
+  jam: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  pin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+  kontak: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg>',
+  rute: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 18-8-8 18-2-8-8-2Z"/></svg>'
 };
 
 // ===== Perhitungan (tanpa tampilan) =====
@@ -66,9 +105,14 @@ function urutkanLokasi(daftarLokasi, lat, lng, jenisPlastik) {
     .sort((a, b) => a.jarak - b.jarak);
 }
 
+// Jarak sebagai [angka, satuan], misalnya ["1,3", "km"] atau ["850", "m"].
+function bagianJarak(km) {
+  if (km < 1) return [String(Math.max(10, Math.round(km * 100) * 10)), "m"];
+  return [km.toLocaleString("id-ID", { minimumFractionDigits: km < 10 ? 1 : 0, maximumFractionDigits: 1 }), "km"];
+}
+
 function formatJarak(km) {
-  if (km < 1) return Math.max(10, Math.round(km * 100) * 10) + " m";
-  return km.toLocaleString("id-ID", { maximumFractionDigits: 1 }) + " km";
+  return bagianJarak(km).join(" ");
 }
 
 function labelPlastik(jenis) {
@@ -76,8 +120,11 @@ function labelPlastik(jenis) {
   return kunci ? LABEL_PLASTIK[kunci] : jenis;
 }
 
-function linkArah(lat, lng) {
-  return "https://www.google.com/maps/dir/?api=1&destination=" + lat + "," + lng;
+// Link rute Google Maps. Jika lokasi punya "tujuan_gmaps", Google Maps
+// mencari tempat itu sendiri (lebih tepat bila koordinat kita hanya perkiraan).
+function linkArah(lokasi) {
+  const tujuan = lokasi.tujuan_gmaps ? encodeURIComponent(lokasi.tujuan_gmaps) : lokasi.lat + "," + lokasi.lng;
+  return "https://www.google.com/maps/dir/?api=1&destination=" + tujuan;
 }
 
 function linkCariBankSampah(lat, lng) {
@@ -91,7 +138,8 @@ const keadaan = {
   posisi: null, // { lat, lng, sumber: "gps" | "manual" }
   filter: null,
   peta: null,
-  lapisan: null
+  lapisan: null,
+  lapisanDasar: null
 };
 
 // Membuat elemen HTML. Teks selalu dipasang sebagai teks biasa (aman).
@@ -108,10 +156,25 @@ function el(tag, atribut, isi) {
   return e;
 }
 
+// Ikon dari daftar IKON (isi tetap, bukan data dari lokasi.json).
+function ikonSvg(nama) {
+  const wadah = document.createElement("span");
+  wadah.innerHTML = IKON[nama];
+  return wadah.firstChild;
+}
+
 const $ = id => document.getElementById(id);
 
 function setStatus(teks) {
   $("status").textContent = teks;
+}
+
+function simpanPilihan(kunci, nilai) {
+  try { localStorage.setItem(kunci, nilai); } catch (e) { /* abaikan */ }
+}
+
+function bacaPilihan(kunci) {
+  try { return localStorage.getItem(kunci); } catch (e) { return null; }
 }
 
 async function muatData() {
@@ -127,11 +190,11 @@ async function muatData() {
 }
 
 function tampilkanInfoData() {
+  const semua = keadaan.semuaLokasi.length;
   const belum = keadaan.semuaLokasi.filter(l => !l.terverifikasi).length;
   $("info-data").textContent = belum
-    ? "⚠️ " + belum + " dari " + keadaan.semuaLokasi.length +
-      " lokasi masih data contoh / belum terverifikasi. Jangan dijadikan patokan dulu."
-    : "Semua lokasi sudah diverifikasi oleh tim Zero Plastic.";
+    ? belum + " dari " + semua + " lokasi diambil dari sumber publik dan belum dicek langsung oleh tim. Hubungi tempatnya dulu sebelum datang."
+    : semua + " lokasi dikumpulkan dari sumber resmi, berita, dan OpenStreetMap. Hubungi tempatnya dulu sebelum datang.";
 }
 
 function buatFilter() {
@@ -165,16 +228,42 @@ function buatFilter() {
   });
 }
 
+function pakaiGayaPeta(kunci) {
+  const gaya = GAYA_PETA[kunci] || GAYA_PETA[PENGATURAN.gayaPetaAwal];
+  if (keadaan.lapisanDasar) keadaan.peta.removeLayer(keadaan.lapisanDasar);
+  keadaan.lapisanDasar = L.layerGroup(gaya.lapisan.map(url => L.tileLayer(url, gaya.opsi))).addTo(keadaan.peta);
+  document.querySelectorAll(".pilih-peta button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.gaya === kunci))
+  );
+  simpanPilihan("gayaPeta", kunci);
+}
+
+// Tombol pilihan gaya peta di pojok kanan atas peta.
+function buatPilihanPeta() {
+  const Kontrol = L.Control.extend({
+    onAdd() {
+      const wadah = el("div", { class: "pilih-peta", role: "group", "aria-label": "Gaya peta" });
+      Object.entries(GAYA_PETA).forEach(([kunci, gaya]) => {
+        const tombol = el("button", { type: "button", "data-gaya": kunci, "aria-pressed": "false" }, gaya.label);
+        tombol.addEventListener("click", () => pakaiGayaPeta(kunci));
+        wadah.append(tombol);
+      });
+      L.DomEvent.disableClickPropagation(wadah);
+      return wadah;
+    }
+  });
+  new Kontrol({ position: "topright" }).addTo(keadaan.peta);
+}
+
 function siapkanPeta() {
   if (keadaan.peta || typeof L === "undefined") return;
-  const peta = L.map("peta").setView(PENGATURAN.pusatAwal, PENGATURAN.zoomAwal);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
-  }).addTo(peta);
-  keadaan.lapisan = L.layerGroup().addTo(peta);
-  peta.on("click", e => aturPosisi(e.latlng.lat, e.latlng.lng, "manual"));
-  keadaan.peta = peta;
+  keadaan.peta = L.map("peta", { zoomControl: false }).setView(PENGATURAN.pusatAwal, PENGATURAN.zoomAwal);
+  L.control.zoom({ position: "bottomright" }).addTo(keadaan.peta);
+  keadaan.lapisan = L.layerGroup().addTo(keadaan.peta);
+  buatPilihanPeta();
+  const tersimpan = bacaPilihan("gayaPeta");
+  pakaiGayaPeta(GAYA_PETA[tersimpan] ? tersimpan : PENGATURAN.gayaPetaAwal);
+  keadaan.peta.on("click", e => aturPosisi(e.latlng.lat, e.latlng.lng, "manual"));
 }
 
 function ikon(kelas, teks, ukuran) {
@@ -193,7 +282,7 @@ function isiPopup(lokasi, jarak) {
     el("br"),
     lokasi.jenis + " · " + formatJarak(jarak),
     el("br"),
-    el("a", { href: linkArah(lokasi.lat, lokasi.lng), target: "_blank", rel: "noopener" }, "🧭 Arahkan")
+    el("a", { href: linkArah(lokasi), target: "_blank", rel: "noopener" }, "Rute di Google Maps →")
   ]);
 }
 
@@ -204,14 +293,14 @@ function gambarPeta(teratas, semua) {
 
   const idTeratas = new Set(teratas.map(h => h.lokasi));
   semua.filter(h => !idTeratas.has(h.lokasi)).forEach(h =>
-    L.marker([h.lokasi.lat, h.lokasi.lng], { icon: ikon("penanda-lain", "", 14) })
+    L.marker([h.lokasi.lat, h.lokasi.lng], { icon: ikon("penanda-lain", "", 12) })
       .bindPopup(isiPopup(h.lokasi, h.jarak))
       .addTo(lapisan)
   );
 
   const penanda = teratas.map((h, i) =>
     L.marker([h.lokasi.lat, h.lokasi.lng], {
-      icon: i === 0 ? ikon("penanda-terbaik", "★", 40) : ikon("", String(i + 1), 30),
+      icon: i === 0 ? ikon("penanda-terbaik", "1", 42) : ikon("", String(i + 1), 30),
       zIndexOffset: 1000 - i * 100,
       title: h.lokasi.nama
     })
@@ -219,43 +308,44 @@ function gambarPeta(teratas, semua) {
       .addTo(lapisan)
   );
 
-  L.circleMarker([posisi.lat, posisi.lng], {
-    radius: 9, color: "#fff", weight: 3, fillColor: "#1a73e8", fillOpacity: 1
+  L.marker([posisi.lat, posisi.lng], {
+    icon: L.divIcon({ className: "", html: '<div class="penanda-saya"></div>', iconSize: [18, 18], iconAnchor: [9, 9] }),
+    zIndexOffset: 2000,
+    keyboard: false
   }).bindPopup(posisi.sumber === "gps" ? "Posisimu" : "Titik yang kamu tandai").addTo(lapisan);
 
   if (teratas.length) {
     const batas = L.latLngBounds([[posisi.lat, posisi.lng]].concat(teratas.map(h => [h.lokasi.lat, h.lokasi.lng])));
-    peta.fitBounds(batas, { padding: [40, 40], maxZoom: 15 });
+    peta.fitBounds(batas, { padding: [50, 50], maxZoom: 15 });
   } else {
     peta.setView([posisi.lat, posisi.lng], 13);
   }
   return penanda;
 }
 
+function baris(namaIkon, teks) {
+  return el("p", { class: "meta" }, [ikonSvg(namaIkon), el("span", {}, teks)]);
+}
+
 function buatKartu(hasil, urutan, penanda) {
   const { lokasi, jarak } = hasil;
   const terbaik = urutan === 0;
-  const lencana = [
-    el("span", { class: "lencana" + (terbaik ? " lencana-terbaik" : "") },
-      terbaik ? (keadaan.filter ? "⭐ Paling cocok" : "⭐ Paling dekat") : "#" + (urutan + 1)),
-    lokasi.terverifikasi ? null : el("span", { class: "lencana lencana-belum" }, "Belum terverifikasi")
-  ];
+  const [angka, satuan] = bagianJarak(jarak);
 
-  const detail = el("dl", {}, [
-    el("dt", {}, "Jenis tempat"), el("dd", {}, lokasi.jenis || "-"),
-    el("dt", {}, "Plastik yang diterima"),
-    el("dd", {}, (lokasi.plastik_diterima || []).map(labelPlastik).join(", ") || "-"),
-    el("dt", {}, "Jam buka"), el("dd", {}, lokasi.jam_buka || "Belum ada info"),
-    lokasi.alamat ? el("dt", {}, "Alamat") : null, lokasi.alamat ? el("dd", {}, lokasi.alamat) : null,
-    lokasi.kontak ? el("dt", {}, "Kontak") : null, lokasi.kontak ? el("dd", {}, lokasi.kontak) : null
-  ]);
-
-  const kartu = el("li", { class: "kartu" + (terbaik ? " kartu-terbaik" : "") }, [
-    el("div", {}, lencana),
+  const kartu = el("li", { class: "kartu" + (terbaik ? " kartu-utama" : "") }, [
+    el("div", { class: "kartu-atas" }, [
+      el("span", {}, terbaik ? (keadaan.filter ? "Paling cocok" : "Paling dekat") : "0" + (urutan + 1)),
+      lokasi.terverifikasi ? null : el("span", { class: "belum" }, "Belum dicek")
+    ]),
     el("h3", {}, lokasi.nama),
-    el("div", { class: "jarak" }, formatJarak(jarak)),
-    detail,
-    el("a", { class: "tombol-arah", href: linkArah(lokasi.lat, lokasi.lng), target: "_blank", rel: "noopener" }, "🧭 Arahkan")
+    el("p", { class: "jarak" }, [el("strong", {}, angka), " " + satuan + " · " + (lokasi.jenis || "")]),
+    el("ul", { class: "tag-plastik", "aria-label": "Plastik yang diterima" },
+      (lokasi.plastik_diterima || []).map(p => el("li", {}, labelPlastik(p)))),
+    baris("jam", lokasi.jam_buka || "Belum ada info jam buka"),
+    terbaik && lokasi.alamat ? baris("pin", lokasi.alamat) : null,
+    lokasi.kontak ? baris("kontak", lokasi.kontak) : null,
+    el("a", { class: "tombol-rute", href: linkArah(lokasi), target: "_blank", rel: "noopener" },
+      [ikonSvg("rute"), "Rute di Google Maps"])
   ]);
 
   // Ketuk kartu → tunjukkan tempatnya di peta.
@@ -272,7 +362,7 @@ function tampilkanPeringatan(teratas) {
   const kotak = $("peringatan");
   const { lat, lng } = keadaan.posisi;
   const fallback = el("a", { href: linkCariBankSampah(lat, lng), target: "_blank", rel: "noopener" },
-    "🔎 Cari \"bank sampah\" di sekitarmu lewat Google Maps");
+    "Cari \"bank sampah\" di sekitarmu lewat Google Maps →");
   let pesan = null;
 
   if (!teratas.length) {
@@ -280,7 +370,7 @@ function tampilkanPeringatan(teratas) {
       ? "Belum ada tempat di data kami yang menerima " + labelPlastik(keadaan.filter) + ". Coba pilih jenis lain, atau:"
       : "Belum ada data lokasi. Coba cari langsung di Google Maps:";
   } else if (teratas[0].jarak > PENGATURAN.batasJauhKm) {
-    pesan = "Jujur saja, tempat terdekat di data kami berjarak " + formatJarak(teratas[0].jarak) +
+    pesan = "Tempat terdekat di data kami berjarak " + formatJarak(teratas[0].jarak) +
       " darimu, cukup jauh. Data kami masih terbatas, jadi mungkin ada tempat yang lebih dekat tapi belum tercatat:";
   }
 
@@ -301,24 +391,20 @@ function tampilkanHasil() {
   const daftar = $("daftar");
   daftar.innerHTML = "";
   teratas.forEach((h, i) => daftar.append(buatKartu(h, i, penanda[i])));
-  $("judul-hasil").hidden = !teratas.length;
-  $("judul-hasil").textContent = keadaan.filter
-    ? "Tempat terdekat yang menerima " + labelPlastik(keadaan.filter)
-    : "Tempat terdekat untukmu";
 }
 
 function aturPosisi(lat, lng, sumber) {
   keadaan.posisi = { lat, lng, sumber };
   setStatus(sumber === "gps"
-    ? "✅ Lokasimu ditemukan."
-    : "📌 Dihitung dari titik yang kamu tandai. Ketuk peta lagi untuk memindahkannya.");
+    ? "Lokasimu ditemukan. Ini tempat terdekat untukmu."
+    : "Dihitung dari titik yang kamu tandai. Ketuk peta lagi untuk memindahkannya.");
   tampilkanHasil();
 }
 
 function modeManual(alasan) {
   let pesan = alasan + " Ketuk peta untuk menandai posisimu, lalu kami carikan tempat terdekat dari titik itu.";
   if (/Instagram|FBAN|FBAV/i.test(navigator.userAgent)) {
-    pesan += " Tips: kalau dibuka dari Instagram, coba buka lewat Chrome/Safari (menu ⋯ → Buka di browser).";
+    pesan += " Tips: kalau dibuka dari Instagram, buka lewat Chrome/Safari (menu ⋯ → Buka di browser).";
   }
   setStatus(pesan);
   if (!keadaan.posisi && keadaan.peta) keadaan.peta.setView(PENGATURAN.pusatAwal, PENGATURAN.zoomAwal);
@@ -328,6 +414,7 @@ function modeManual(alasan) {
 async function cari(dataSiap) {
   const tombol = $("tombol-cari");
   $("area-hasil").hidden = false;
+  document.querySelector(".hero").classList.add("ringkas");
   siapkanPeta();
   if (keadaan.peta) keadaan.peta.invalidateSize();
   else $("petunjuk-peta").textContent = "Peta gagal dimuat. Periksa koneksi internet lalu muat ulang halaman.";
@@ -335,7 +422,7 @@ async function cari(dataSiap) {
   try {
     await dataSiap;
   } catch (err) {
-    setStatus("❌ Data lokasi gagal dimuat. Coba muat ulang halaman.");
+    setStatus("Data lokasi gagal dimuat. Coba muat ulang halaman.");
     console.error(err);
     return;
   }
@@ -350,8 +437,9 @@ async function cari(dataSiap) {
   navigator.geolocation.getCurrentPosition(
     pos => {
       tombol.disabled = false;
-      tombol.textContent = "📍 Cari ulang dari lokasiku";
+      tombol.querySelector("span").textContent = "Cari ulang dari lokasiku";
       aturPosisi(pos.coords.latitude, pos.coords.longitude, "gps");
+      $("status").scrollIntoView({ behavior: "smooth", block: "start" });
     },
     err => {
       tombol.disabled = false;

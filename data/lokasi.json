@@ -1,113 +1,767 @@
 [
   {
-    "id": "contoh-01",
-    "nama": "[CONTOH] Bank Sampah Titik 1 (area Gubeng)",
-    "lat": -7.2756,
-    "lng": 112.7508,
-    "alamat": "Alamat contoh, area Gubeng, Surabaya",
+    "id": "bsis-menur",
+    "nama": "Bank Sampah Induk Surabaya",
+    "lat": -7.2803,
+    "lng": 112.7625,
+    "alamat": "Jl. Raya Menur No. 31-A, Manyar Sabrangan, Mulyorejo, Surabaya 60116",
     "jenis": "bank sampah",
-    "plastik_diterima": ["PET", "HDPE", "PP", "kresek"],
-    "jam_buka": "Sabtu 08.00–11.00 (contoh)",
-    "kontak": "contoh@example.com",
-    "terverifikasi": false
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Senin–Sabtu (jam pastinya cek dulu sebelum datang)",
+    "tujuan_gmaps": "Bank Sampah Induk Surabaya, Jl. Raya Menur No. 31-A, Surabaya",
+    "sumber": [
+      "https://banksampahinduksurabaya.id/",
+      "https://www.detik.com/jatim/berita/d-6929783/sampah-bisa-ditukar-jadi-uang-di-surabaya-gimana-caranya",
+      "https://banksampahinduksurabaya.id/2025/07/11/setor-sampah-bisa-datangkan-uang-di-bank-sampah-induk-surabaya/"
+    ],
+    "terverifikasi": true
   },
   {
-    "id": "contoh-02",
-    "nama": "[CONTOH] Bank Sampah Titik 2 (area Tegalsari)",
-    "lat": -7.2681,
-    "lng": 112.7361,
-    "alamat": "Alamat contoh, area Tegalsari, Surabaya",
+    "id": "dlh-jimerto",
+    "nama": "Bank Sampah Induk – Kantor DLH Surabaya",
+    "lat": -7.257694,
+    "lng": 112.747481,
+    "alamat": "Jl. Jimerto No. 25-27, Ketabang, Genteng, Surabaya 60272",
     "jenis": "bank sampah",
-    "plastik_diterima": ["PET", "HDPE"],
-    "jam_buka": "Minggu 07.00–10.00 (contoh)",
-    "terverifikasi": false
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Senin–Kamis 08.00–16.00, Jumat 08.00–15.00 (jam kantor)",
+    "tujuan_gmaps": "Dinas Lingkungan Hidup Kota Surabaya, Jl. Jimerto 25-27, Surabaya",
+    "sumber": [
+      "https://surabaya.go.id/id/berita/25154/harga-plastik-naik-dlh-surabaya-ajak-warga-raup-cuan-lewat-pilah-sampah-dari-rumah",
+      "https://www.openstreetmap.org/node/12759310876"
+    ],
+    "terverifikasi": true
   },
   {
-    "id": "contoh-03",
-    "nama": "[CONTOH] TPS3R Titik 3 (area Rungkut)",
+    "id": "pdu-jambangan",
+    "nama": "Pusat Daur Ulang (PDU) Jambangan",
     "lat": -7.3195,
-    "lng": 112.7802,
-    "alamat": "Alamat contoh, area Rungkut, Surabaya",
+    "lng": 112.715,
+    "alamat": "Jl. Jambangan Kebon Agung, Jambangan, Surabaya",
+    "jenis": "pusat daur ulang",
+    "plastik_diterima": [
+      "PET",
+      "PP",
+      "kresek"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "PDU Jambangan, Surabaya",
+    "sumber": [
+      "https://www.kemenlh.go.id/news/detail/dari-sampah-mereka-menjaga-napas-kota-kisah-para-pekerja-dan-warga-di-balik-pdu-jambangan-surabaya",
+      "https://www.suarasurabaya.net/senggang/2018/PDU-Jambangan-Sarana-Edukatif-Mengenal-Pengelolaan-Sampah/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "superdepo-sutorejo",
+    "nama": "Super Depo Sutorejo (TPS3R)",
+    "lat": -7.2615,
+    "lng": 112.7879,
+    "alamat": "Jl. Sutorejo, Dukuh Sutorejo, Mulyorejo, Surabaya",
     "jenis": "TPS3R",
-    "plastik_diterima": ["PET", "HDPE", "PP", "kresek", "sachet", "styrofoam"],
-    "jam_buka": "Senin–Jumat 08.00–15.00 (contoh)",
-    "terverifikasi": false
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Super Depo Sutorejo, Surabaya",
+    "sumber": [
+      "https://jawapos.com/surabaya-raya/2203170176/super-depo-sutorejo-wujud-nyata-kerja-sama-surabaya-dengan-kitakyushu"
+    ],
+    "terverifikasi": true
   },
   {
-    "id": "contoh-04",
-    "nama": "[CONTOH] Pengepul Titik 4 (area Wonokromo)",
-    "lat": -7.3010,
-    "lng": 112.7365,
-    "alamat": "Alamat contoh, area Wonokromo, Surabaya",
-    "jenis": "pengepul",
-    "plastik_diterima": ["PET", "HDPE", "PP"],
-    "jam_buka": "Setiap hari 08.00–16.00 (contoh)",
-    "terverifikasi": false
-  },
-  {
-    "id": "contoh-05",
-    "nama": "[CONTOH] Bank Sampah Titik 5 (area Kenjeran)",
-    "lat": -7.2340,
-    "lng": 112.7765,
-    "alamat": "Alamat contoh, area Kenjeran, Surabaya",
+    "id": "bs-bintang-mangrove",
+    "nama": "Bank Sampah Bintang Mangrove",
+    "lat": -7.3398,
+    "lng": 112.8113,
+    "alamat": "Kawasan Mangrove Gang 3, Gunung Anyar Tambak, Gunung Anyar, Surabaya",
     "jenis": "bank sampah",
-    "plastik_diterima": ["PET", "kresek", "sachet"],
-    "jam_buka": "Rabu & Sabtu 15.00–17.00 (contoh)",
-    "terverifikasi": false
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Bintang Mangrove, Gunung Anyar Tambak, Surabaya",
+    "sumber": [
+      "https://www.jawapos.com/surabaya/26/11/2020/bank-sampah-bintang-mangrove-bintang-kehidupan-perekonomian-warga/"
+    ],
+    "terverifikasi": true
   },
   {
-    "id": "contoh-06",
-    "nama": "[CONTOH] TPS3R Titik 6 (area Benowo)",
-    "lat": -7.2405,
-    "lng": 112.6430,
-    "alamat": "Alamat contoh, area Benowo, Surabaya",
+    "id": "dropbox-bungkul",
+    "nama": "Drop Box Plastik Taman Bungkul",
+    "lat": -7.291225,
+    "lng": 112.739872,
+    "alamat": "Taman Bungkul, Jl. Raya Darmo, Darmo, Wonokromo, Surabaya",
+    "jenis": "drop box",
+    "plastik_diterima": [
+      "PET",
+      "PP"
+    ],
+    "jam_buka": "Mengikuti jam buka taman",
+    "sumber": [
+      "https://headlinejatim.com/2025/10/21/pln-dorong-aksi-pelestarian-lingkungan-sambut-momen-hari-sumpah-pemuda/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "dropbox-apsari",
+    "nama": "Drop Box Plastik Taman Apsari",
+    "lat": -7.263799,
+    "lng": 112.742786,
+    "alamat": "Taman Apsari, Jl. Gubernur Suryo, Embong Kaliasin, Genteng, Surabaya",
+    "jenis": "drop box",
+    "plastik_diterima": [
+      "PET",
+      "PP"
+    ],
+    "jam_buka": "Mengikuti jam buka taman",
+    "sumber": [
+      "https://headlinejatim.com/2025/10/21/pln-dorong-aksi-pelestarian-lingkungan-sambut-momen-hari-sumpah-pemuda/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "dropbox-harmoni",
+    "nama": "Drop Box Plastik Taman Harmoni",
+    "lat": -7.295047,
+    "lng": 112.803603,
+    "alamat": "Taman Harmoni, Keputih, Sukolilo, Surabaya",
+    "jenis": "drop box",
+    "plastik_diterima": [
+      "PET",
+      "PP"
+    ],
+    "jam_buka": "Setiap hari 06.00–18.00 (jam buka taman)",
+    "sumber": [
+      "https://headlinejatim.com/2025/10/21/pln-dorong-aksi-pelestarian-lingkungan-sambut-momen-hari-sumpah-pemuda/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "tps3r-bratang",
+    "nama": "Pemilahan Sampah Bratang (TPS3R)",
+    "lat": -7.297196,
+    "lng": 112.761407,
+    "alamat": "Jl. Ngagel Jaya Selatan, Baratajaya, Gubeng, Surabaya",
     "jenis": "TPS3R",
-    "plastik_diterima": ["PET", "HDPE", "PP", "kresek"],
-    "jam_buka": "Senin–Sabtu 07.00–14.00 (contoh)",
-    "terverifikasi": false
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Pemilahan Sampah Bratang, Surabaya",
+    "sumber": [
+      "https://jdih.surabaya.go.id/uploads/peraturan/2025kepwali3578100-3-3-3-210-436-1-2-2025.pdf",
+      "https://surabaya.suaramerdeka.com/surabaya/106114636070/dampak-efisiensi-surabaya-batal-bangun-tps-3r-baru"
+    ],
+    "terverifikasi": true
   },
   {
-    "id": "contoh-07",
-    "nama": "[CONTOH] Bank Sampah Titik 7 (area Lakarsantri)",
-    "lat": -7.3100,
-    "lng": 112.6560,
-    "alamat": "Alamat contoh, area Lakarsantri, Surabaya",
-    "jenis": "bank sampah",
-    "plastik_diterima": ["PET", "HDPE", "PP"],
-    "jam_buka": "Minggu 08.00–11.00 (contoh)",
-    "terverifikasi": false
-  },
-  {
-    "id": "contoh-08",
-    "nama": "[CONTOH] Bank Sampah Titik 8 (area Waru, Sidoarjo)",
-    "lat": -7.3540,
-    "lng": 112.7240,
-    "alamat": "Alamat contoh, area Waru, Sidoarjo",
-    "jenis": "bank sampah",
-    "plastik_diterima": ["PET", "HDPE", "kresek"],
-    "jam_buka": "Sabtu 09.00–12.00 (contoh)",
-    "terverifikasi": false
-  },
-  {
-    "id": "contoh-09",
-    "nama": "[CONTOH] TPS3R Titik 9 (area Sidoarjo Kota)",
-    "lat": -7.4470,
-    "lng": 112.7180,
-    "alamat": "Alamat contoh, area Sidoarjo Kota, Sidoarjo",
+    "id": "tps3r-osowilangun",
+    "nama": "TPS3R Tambak Osowilangun",
+    "lat": -7.215574,
+    "lng": 112.654043,
+    "alamat": "Tambak Osowilangun, Benowo, Surabaya",
     "jenis": "TPS3R",
-    "plastik_diterima": ["PET", "HDPE", "PP", "kresek", "sachet"],
-    "jam_buka": "Senin–Jumat 08.00–15.00 (contoh)",
-    "terverifikasi": false
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "TPS 3R Tambak Osowilangun, Surabaya",
+    "sumber": [
+      "https://jdih.surabaya.go.id/uploads/peraturan/2025kepwali3578100-3-3-3-210-436-1-2-2025.pdf",
+      "https://surabaya.suaramerdeka.com/surabaya/106114636070/dampak-efisiensi-surabaya-batal-bangun-tps-3r-baru"
+    ],
+    "terverifikasi": true
   },
   {
-    "id": "contoh-10",
-    "nama": "[CONTOH] Pengepul Titik 10 (area Candi, Sidoarjo)",
-    "lat": -7.4900,
-    "lng": 112.7050,
-    "alamat": "Alamat contoh, area Candi, Sidoarjo",
-    "jenis": "pengepul",
-    "plastik_diterima": ["PET", "HDPE", "PP", "styrofoam"],
-    "jam_buka": "Setiap hari 08.00–17.00 (contoh)",
-    "terverifikasi": false
+    "id": "tps3r-tenggilis",
+    "nama": "TPS3R Tenggilis",
+    "lat": -7.320908,
+    "lng": 112.755249,
+    "alamat": "Tenggilis Mejoyo, Surabaya",
+    "jenis": "TPS3R",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "TPS 3R Tenggilis, Surabaya",
+    "sumber": [
+      "https://jdih.surabaya.go.id/uploads/peraturan/2025kepwali3578100-3-3-3-210-436-1-2-2025.pdf",
+      "https://surabaya.suaramerdeka.com/surabaya/106114636070/dampak-efisiensi-surabaya-batal-bangun-tps-3r-baru"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "tps3r-kedungcowek",
+    "nama": "TPS3R Kedung Cowek",
+    "lat": -7.213236,
+    "lng": 112.779242,
+    "alamat": "Kedung Cowek, Bulak, Surabaya",
+    "jenis": "TPS3R",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "TPS 3R Kedung Cowek, Surabaya",
+    "sumber": [
+      "https://jdih.surabaya.go.id/uploads/peraturan/2025kepwali3578100-3-3-3-210-436-1-2-2025.pdf",
+      "https://surabaya.suaramerdeka.com/surabaya/106114636070/dampak-efisiensi-surabaya-batal-bangun-tps-3r-baru"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "tps3r-gununganyar",
+    "nama": "TPS3R Gunung Anyar",
+    "lat": -7.338169,
+    "lng": 112.788756,
+    "alamat": "Gunung Anyar, Surabaya",
+    "jenis": "TPS3R",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "TPS 3R Gunung Anyar, Surabaya",
+    "sumber": [
+      "https://jdih.surabaya.go.id/uploads/peraturan/2025kepwali3578100-3-3-3-210-436-1-2-2025.pdf",
+      "https://surabaya.suaramerdeka.com/surabaya/106114636070/dampak-efisiensi-surabaya-batal-bangun-tps-3r-baru"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "tps3r-karangpilang",
+    "nama": "TPS3R Karang Pilang",
+    "lat": -7.335914,
+    "lng": 112.696305,
+    "alamat": "Karang Pilang, Surabaya",
+    "jenis": "TPS3R",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "TPS 3R Karang Pilang, Surabaya",
+    "sumber": [
+      "https://jdih.surabaya.go.id/uploads/peraturan/2025kepwali3578100-3-3-3-210-436-1-2-2025.pdf",
+      "https://surabaya.suaramerdeka.com/surabaya/106114636070/dampak-efisiensi-surabaya-batal-bangun-tps-3r-baru"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "tps3r-warugunung",
+    "nama": "TPS3R Waru Gunung",
+    "lat": -7.350372,
+    "lng": 112.673424,
+    "alamat": "Warugunung, Karang Pilang, Surabaya",
+    "jenis": "TPS3R",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "TPS 3R Waru Gunung, Surabaya",
+    "sumber": [
+      "https://jdih.surabaya.go.id/uploads/peraturan/2025kepwali3578100-3-3-3-210-436-1-2-2025.pdf",
+      "https://surabaya.suaramerdeka.com/surabaya/106114636070/dampak-efisiensi-surabaya-batal-bangun-tps-3r-baru"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "tps3r-banjarsugihan",
+    "nama": "TPS3R Banjar Sugihan",
+    "lat": -7.252609,
+    "lng": 112.659658,
+    "alamat": "Banjar Sugihan, Tandes, Surabaya",
+    "jenis": "TPS3R",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "TPS 3R Banjar Sugihan, Surabaya",
+    "sumber": [
+      "https://jdih.surabaya.go.id/uploads/peraturan/2025kepwali3578100-3-3-3-210-436-1-2-2025.pdf",
+      "https://surabaya.suaramerdeka.com/surabaya/106114636070/dampak-efisiensi-surabaya-batal-bangun-tps-3r-baru"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "tps3r-tambakwedi",
+    "nama": "TPS3R Tambak Wedi",
+    "lat": -7.211364,
+    "lng": 112.774993,
+    "alamat": "Tambak Wedi, Kenjeran, Surabaya",
+    "jenis": "TPS3R",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "TPS 3R Tambak Wedi, Surabaya",
+    "sumber": [
+      "https://jdih.surabaya.go.id/uploads/peraturan/2025kepwali3578100-3-3-3-210-436-1-2-2025.pdf",
+      "https://surabaya.suaramerdeka.com/surabaya/106114636070/dampak-efisiensi-surabaya-batal-bangun-tps-3r-baru"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "tps3r-sumberejo",
+    "nama": "TPS3R Sumberejo",
+    "lat": -7.227743,
+    "lng": 112.607111,
+    "alamat": "Sumberrejo, Pakal, Surabaya",
+    "jenis": "TPS3R",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "TPS 3R Sumberejo, Pakal, Surabaya",
+    "sumber": [
+      "https://jdih.surabaya.go.id/uploads/peraturan/2025kepwali3578100-3-3-3-210-436-1-2-2025.pdf",
+      "https://surabaya.suaramerdeka.com/surabaya/106114636070/dampak-efisiensi-surabaya-batal-bangun-tps-3r-baru"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bsi-sukomanunggal",
+    "nama": "Bank Sampah Induk Berkah Sukomanunggal",
+    "lat": -7.26513,
+    "lng": 112.697736,
+    "alamat": "Jl. Sukomanunggal 5 No. 2, Sukomanunggal, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Induk Berkah Sukomanunggal, Jl. Sukomanunggal 5 No. 2, Surabaya",
+    "sumber": [
+      "https://info3r.kemenlh.go.id/daerah/index/search/cdfb49835cb5ce62e533757e9d288139/?offset=271"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-manyar-mandiri",
+    "nama": "Bank Sampah Manyar Mandiri",
+    "lat": -7.283252,
+    "lng": 112.766422,
+    "alamat": "Jl. Manyar Sabrangan IX B Gg. Makam, Manyar Sabrangan, Mulyorejo, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Manyar Mandiri, Jl. Manyar Sabrangan IX B, Surabaya",
+    "sumber": [
+      "https://karyakreatif.co.id/lokasi-bank-sampah-terdekat-di-surabaya/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-kampung-dinoyo",
+    "nama": "Bank Sampah Kampung Dinoyo",
+    "lat": -7.284874,
+    "lng": 112.744859,
+    "alamat": "Jl. Dinoyo Tengah No. 32, Keputran, Tegalsari, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Kampung Dinoyo, Jl. Dinoyo Tengah No. 32, Surabaya",
+    "sumber": [
+      "https://karyakreatif.co.id/lokasi-bank-sampah-terdekat-di-surabaya/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-rafflesia",
+    "nama": "Bank Sampah Rafflesia",
+    "lat": -7.295121,
+    "lng": 112.754984,
+    "alamat": "Jl. Krukah Lama Gg. Buntu No. 9, Ngagelrejo, Wonokromo, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Rafflesia, Jl. Krukah Lama, Surabaya",
+    "sumber": [
+      "https://karyakreatif.co.id/lokasi-bank-sampah-terdekat-di-surabaya/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-mekar-jaya",
+    "nama": "Bank Sampah Mekar Jaya",
+    "lat": -7.27347,
+    "lng": 112.739024,
+    "alamat": "Jl. Kedondong Kidul 1 No. 95, Tegalsari, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Mekar Jaya, Jl. Kedondong Kidul 1 No. 95, Surabaya",
+    "sumber": [
+      "https://karyakreatif.co.id/lokasi-bank-sampah-terdekat-di-surabaya/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-bianglala",
+    "nama": "Bank Sampah Bianglala",
+    "lat": -7.272188,
+    "lng": 112.737815,
+    "alamat": "Jl. Kedondong Kidul, RT 010 RW 006, Tegalsari, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Bianglala, Kedondong Kidul, Surabaya",
+    "sumber": [
+      "https://www.kompas.id/artikel/semangat-ibu-ibu-pengelola-bank-sampah-di-surabaya"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-samber-10",
+    "nama": "Bank Sampah Sektor Samber 10",
+    "lat": -7.270968,
+    "lng": 112.736976,
+    "alamat": "Kelurahan Tegalsari, Tegalsari, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Samber 10, Tegalsari, Surabaya",
+    "sumber": [
+      "https://repository.unair.ac.id/142583/1/071711133057_HALAMAN%20JUDUL.pdf"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-cempaka",
+    "nama": "Bank Sampah Cempaka",
+    "lat": -7.276093,
+    "lng": 112.731041,
+    "alamat": "Jl. Kupang Panjaan II No. 30, Dr. Soetomo, Tegalsari, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Cempaka, Jl. Kupang Panjaan II No. 30, Surabaya",
+    "sumber": [
+      "https://banksampahpusat.org/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-sektoral-anggrek",
+    "nama": "Bank Sampah Sektoral Anggrek",
+    "lat": -7.311988,
+    "lng": 112.683014,
+    "alamat": "Balai RW 05 Perumahan Babatan Pilang, Jl. Babatan Pilang III, Wiyung, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Balai RW 05 Babatan Pilang, Wiyung, Surabaya",
+    "sumber": [
+      "https://zerowaste.id/peta-minim-sampah/sektoral-anggrek/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-dalane-sogeh",
+    "nama": "Bank Sampah Dalane Sogeh",
+    "lat": -7.329618,
+    "lng": 112.700426,
+    "alamat": "Kebraon, Karang Pilang, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Dalane Sogeh, Kebraon, Surabaya",
+    "sumber": [
+      "https://banksampahpusat.org/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-bertiga",
+    "nama": "Bank Sampah Bertiga",
+    "lat": -7.329365,
+    "lng": 112.772298,
+    "alamat": "Rungkut Kidul, Rungkut, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Bertiga, Rungkut Kidul, Surabaya",
+    "sumber": [
+      "https://karyakreatif.co.id/lokasi-bank-sampah-terdekat-di-surabaya/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-margorejo-mandiri",
+    "nama": "Bank Sampah Margorejo Mandiri",
+    "lat": -7.315426,
+    "lng": 112.741138,
+    "alamat": "Margorejo, Wonocolo, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Margorejo Mandiri, Margorejo, Surabaya",
+    "sumber": [
+      "https://karyakreatif.co.id/lokasi-bank-sampah-terdekat-di-surabaya/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "bs-aspol-koblen",
+    "nama": "Bank Sampah Aspol Koblen",
+    "lat": -7.251729,
+    "lng": 112.73347,
+    "alamat": "RW 09 Aspol Koblen 7, Bubutan, Surabaya",
+    "jenis": "bank sampah",
+    "plastik_diterima": [
+      "PET",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Aspol Koblen, Bubutan, Surabaya",
+    "sumber": [
+      "https://surabaya.tribunnews.com/2019/09/03/dirikan-bank-sampah-dari-botol-plastik-begini-cara-warga-aspol-koblen-surabaya-tambah-penghasilan"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "reko-citraland-utara",
+    "nama": "Waste Station Rekosistem CitraLand Utara",
+    "lat": -7.255453,
+    "lng": 112.626608,
+    "alamat": "Samping Clue Club House, CitraLand Utara, Sememi, Benowo, Surabaya",
+    "jenis": "waste station",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Clue Club House CitraLand Utara, Surabaya",
+    "sumber": [
+      "https://x.com/rekosistem/status/1440259116983668747",
+      "https://citralandutara.com/pertama-di-surabaya-drop-point-rekosistem-hadir-di-citraland-utara-surabaya/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "reko-citraland-selatan",
+    "nama": "Waste Station Rekosistem CitraLand Selatan",
+    "lat": -7.287117,
+    "lng": 112.640371,
+    "alamat": "Jl. Radial Road, CitraLand, Surabaya",
+    "jenis": "waste station",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Radial Road CitraLand, Surabaya",
+    "sumber": [
+      "https://x.com/rekosistem/status/1440259116983668747",
+      "https://citralandsurabaya.com/membantu-pengelolaan-sampah-rekosistem-hadir-di-citraland-surabaya/"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "reko-pasar-sememi",
+    "nama": "Waste Station Pasar Sememi",
+    "lat": -7.246563,
+    "lng": 112.642018,
+    "alamat": "Pasar Sememi, Benowo, Surabaya",
+    "jenis": "waste station",
+    "plastik_diterima": [
+      "PET",
+      "HDPE",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Pasar Sememi, Surabaya",
+    "sumber": [
+      "https://www.ajinomoto.co.id/id/artikel/ajinomoto-luncurkan-fasilitas-waste-station-edukasi-masyarakat-untuk-pilah-sampah-dari-sumbernya"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "sb-joyoboyo",
+    "nama": "Pos Tukar Botol – Terminal Intermoda Joyoboyo",
+    "lat": -7.298926,
+    "lng": 112.736471,
+    "alamat": "Terminal Intermoda Joyoboyo, Sawunggaling, Wonokromo, Surabaya",
+    "jenis": "tukar botol Suroboyo Bus",
+    "plastik_diterima": [
+      "PET",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info pasti (botol ditukar tiket Suroboyo Bus)",
+    "sumber": [
+      "https://www.urbanasia.com/style/catat-ini-ketentuan-tukar-tiket-dan-lokasi-penukaran-baru-suroboyo-bus-U5048",
+      "https://www.liputan6.com/surabaya/read/4147805/suroboyo-bus-tambah-lokasi-penukaran-sampah-plastik-untuk-tiket"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "sb-kasuari",
+    "nama": "Pos Tukar Botol – Terminal Kasuari",
+    "lat": -7.23541,
+    "lng": 112.736333,
+    "alamat": "Terminal Kasuari, Jl. Kasuari, Krembangan Selatan, Krembangan, Surabaya",
+    "jenis": "tukar botol Suroboyo Bus",
+    "plastik_diterima": [
+      "PET",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info pasti (botol ditukar tiket Suroboyo Bus)",
+    "sumber": [
+      "https://www.urbanasia.com/style/catat-ini-ketentuan-tukar-tiket-dan-lokasi-penukaran-baru-suroboyo-bus-U5048",
+      "https://www.liputan6.com/surabaya/read/4147805/suroboyo-bus-tambah-lokasi-penukaran-sampah-plastik-untuk-tiket",
+      "https://p2k.stekom.ac.id/ensiklopedia/Terminal_Kasuari"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "sb-pnr-arh",
+    "nama": "Pos Tukar Botol – Park & Ride Arif Rahman Hakim",
+    "lat": -7.290127,
+    "lng": 112.786903,
+    "alamat": "Jl. Arief Rahman Hakim, Keputih, Sukolilo, Surabaya",
+    "jenis": "tukar botol Suroboyo Bus",
+    "plastik_diterima": [
+      "PET",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info pasti (botol ditukar tiket Suroboyo Bus)",
+    "tujuan_gmaps": "Park and Ride Arif Rahman Hakim, Surabaya",
+    "sumber": [
+      "https://www.urbanasia.com/style/catat-ini-ketentuan-tukar-tiket-dan-lokasi-penukaran-baru-suroboyo-bus-U5048",
+      "https://www.liputan6.com/surabaya/read/4147805/suroboyo-bus-tambah-lokasi-penukaran-sampah-plastik-untuk-tiket"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "sb-pnr-sungkono",
+    "nama": "Pos Tukar Botol – Park & Ride Mayjend Sungkono",
+    "lat": -7.291706,
+    "lng": 112.719631,
+    "alamat": "Jl. Mayjend Sungkono, Surabaya",
+    "jenis": "tukar botol Suroboyo Bus",
+    "plastik_diterima": [
+      "PET",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info pasti (botol ditukar tiket Suroboyo Bus)",
+    "tujuan_gmaps": "Park and Ride Mayjend Sungkono, Surabaya",
+    "sumber": [
+      "https://www.urbanasia.com/style/catat-ini-ketentuan-tukar-tiket-dan-lokasi-penukaran-baru-suroboyo-bus-U5048",
+      "https://www.liputan6.com/surabaya/read/4147805/suroboyo-bus-tambah-lokasi-penukaran-sampah-plastik-untuk-tiket"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "sb-merr",
+    "nama": "Pos Tukar Botol – Sentra UKM MERR",
+    "lat": -7.306108,
+    "lng": 112.780554,
+    "alamat": "Sentra UKM MERR, Jl. Dr. Ir. H. Soekarno, Medokan Semampir, Sukolilo, Surabaya",
+    "jenis": "tukar botol Suroboyo Bus",
+    "plastik_diterima": [
+      "PET",
+      "PP"
+    ],
+    "jam_buka": "Belum ada info pasti (botol ditukar tiket Suroboyo Bus)",
+    "sumber": [
+      "https://www.urbanasia.com/style/catat-ini-ketentuan-tukar-tiket-dan-lokasi-penukaran-baru-suroboyo-bus-U5048",
+      "https://www.liputan6.com/surabaya/read/4147805/suroboyo-bus-tambah-lokasi-penukaran-sampah-plastik-untuk-tiket"
+    ],
+    "terverifikasi": true
+  },
+  {
+    "id": "dropbox-sejarah",
+    "nama": "Drop Box Plastik Taman Sejarah",
+    "lat": -7.236124,
+    "lng": 112.737813,
+    "alamat": "Taman Sejarah (Taman Jayengrono), Jl. Rajawali, Krembangan, Surabaya",
+    "jenis": "drop box",
+    "plastik_diterima": [
+      "PET",
+      "PP"
+    ],
+    "jam_buka": "Mengikuti jam buka taman",
+    "sumber": [
+      "https://headlinejatim.com/2025/10/21/pln-dorong-aksi-pelestarian-lingkungan-sambut-momen-hari-sumpah-pemuda/"
+    ],
+    "terverifikasi": true
   }
 ]
