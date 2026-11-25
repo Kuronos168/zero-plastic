@@ -108,7 +108,7 @@ function urutkanLokasi(daftarLokasi, lat, lng, jenisPlastik) {
 // Jarak sebagai [angka, satuan], misalnya ["1,3", "km"] atau ["850", "m"].
 function bagianJarak(km) {
   if (km < 1) return [String(Math.max(10, Math.round(km * 100) * 10)), "m"];
-  return [km.toLocaleString("id-ID", { maximumFractionDigits: 1 }), "km"];
+  return [km.toLocaleString("id-ID", { minimumFractionDigits: km < 10 ? 1 : 0, maximumFractionDigits: 1 }), "km"];
 }
 
 function formatJarak(km) {
@@ -194,7 +194,7 @@ function tampilkanInfoData() {
   const belum = keadaan.semuaLokasi.filter(l => !l.terverifikasi).length;
   $("info-data").textContent = belum
     ? belum + " dari " + semua + " lokasi diambil dari sumber publik dan belum dicek langsung oleh tim. Hubungi tempatnya dulu sebelum datang."
-    : semua + " lokasi sudah dicek langsung oleh tim.";
+    : semua + " lokasi dikumpulkan dari sumber resmi, berita, dan OpenStreetMap. Hubungi tempatnya dulu sebelum datang.";
 }
 
 function buatFilter() {

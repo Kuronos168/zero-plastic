@@ -7,11 +7,11 @@ sampah plastik terdekat **di Surabaya**. Pengunjung menekan tombol
 dengan jarak, jenis plastik yang diterima, jam buka, dan tombol
 **"Rute di Google Maps"**.
 
-> ⚠️ **Data belum dicek langsung.** Lokasi di `data/lokasi.json` dikumpulkan dari
-> berita, situs resmi, dan OpenStreetMap (sumbernya ada di kolom `sumber`).
-> Semuanya masih `"terverifikasi": false` dan tampil dengan label **"Belum dicek"**.
-> Mohon tim menelepon/mendatangi tempatnya, lalu perbaiki jam buka, jenis plastik,
-> dan titik koordinatnya. Lihat [Daftar lokasi yang perlu dicek](#daftar-lokasi-yang-perlu-dicek).
+> ℹ️ **Sumber data.** 40 lokasi di `data/lokasi.json` dikumpulkan dari situs resmi
+> Pemkot/DLH, berita, direktori bank sampah, dan OpenStreetMap (link sumbernya ada di
+> kolom `sumber`). Tim memutuskan menandai semuanya `"terverifikasi": true` karena
+> tidak bisa mengecek satu per satu ke lapangan. Situs tetap mengingatkan pengunjung
+> untuk menghubungi tempatnya sebelum datang. Lihat [Catatan data](#catatan-data).
 
 ## Fitur
 
@@ -66,13 +66,13 @@ Semua lokasi ada di **`data/lokasi.json`**. File ini berisi daftar yang diapit
 | `nama` | ya | Nama tempat. |
 | `lat`, `lng` | ya | Koordinat (angka, **tanpa tanda kutip**, pakai titik bukan koma). Di Surabaya/Sidoarjo `lat` selalu **minus** (sekitar `-7.xxx`) dan `lng` sekitar `112.xxx`. |
 | `alamat` | ya | Alamat lengkap. |
-| `jenis` | ya | Misalnya `"bank sampah"`, `"TPS3R"`, `"pusat daur ulang"`, `"drop box"`, `"pengepul"`. |
+| `jenis` | ya | Misalnya `"bank sampah"`, `"TPS3R"`, `"pusat daur ulang"`, `"drop box"`, `"waste station"`, `"tukar botol Suroboyo Bus"`, `"pengepul"`. |
 | `plastik_diterima` | ya | Daftar jenis plastik. Pakai nama yang sudah ada supaya filternya menyatu: `"PET"`, `"HDPE"`, `"PP"`, `"kresek"`, `"sachet"`, `"styrofoam"`. Jenis baru otomatis muncul sebagai filter. |
 | `jam_buka` | ya | Teks bebas, misalnya `"Senin–Jumat 08.00–15.00"`. |
 | `kontak` | tidak | Nomor/IG/email. Boleh dihapus kalau tidak ada. **Pastikan pemiliknya setuju kontaknya ditampilkan.** |
 | `tujuan_gmaps` | tidak | Teks yang dicari Google Maps saat tombol "Rute" ditekan (nama + alamat). Isi ini kalau koordinatnya masih **perkiraan**, supaya Google Maps mengarahkan ke tempat yang benar. Kalau kosong, rute memakai `lat`,`lng`. |
-| `sumber` | tidak* | Daftar link tempat info ini ditemukan. *Wajib diisi untuk lokasi yang belum dicek, supaya tim bisa menelusurinya. |
-| `terverifikasi` | ya | `true` kalau tim sudah memastikan tempatnya ada & menerima plastik, `false` kalau belum. |
+| `sumber` | ya | Daftar link tempat info ini ditemukan, supaya tim bisa menelusurinya. |
+| `terverifikasi` | ya | `true` kalau tim menerima data ini (saat ini: semua data dari sumber publik), `false` untuk menampilkan label "Belum dicek". |
 
 ### Cara mendapatkan koordinat dari Google Maps
 
@@ -101,24 +101,23 @@ Semua lokasi ada di **`data/lokasi.json`**. File ini berisi daftar yang diapit
 - Kalau ragu, tempel seluruh isi file ke [jsonlint.com](https://jsonlint.com) untuk dicek.
 - Kalau situs menampilkan "Data lokasi gagal dimuat", hampir pasti ada salah ketik di `lokasi.json`.
 
-### Daftar lokasi yang perlu dicek
+### Catatan data
 
-Semua lokasi di bawah diambil dari sumber publik (November 2026) dan **belum dicek
-langsung**. Yang perlu dipastikan untuk setiap tempat: masih buka, menerima
-setoran dari warga umum, jenis plastik yang diterima, jam buka, dan titik koordinat.
+Semua lokasi diambil dari sumber publik (November 2026) dan **tidak dicek ke
+lapangan**. Hal yang perlu diketahui kalau ada laporan dari pengunjung:
 
-| Lokasi | Koordinat | Catatan |
+| Kelompok | Jumlah | Catatan |
 |---|---|---|
-| Bank Sampah Induk Surabaya (Jl. Raya Menur 31-A) | perkiraan (di Jl. Raya Menur) | Alamat dari situs resminya. Jam buka belum ada. |
-| Bank Sampah Induk – Kantor DLH (Jl. Jimerto 25-27) | tepat (OpenStreetMap) | DLH menyebut ada bank sampah induk di kantornya (Mei 2026). Jam = jam kantor DLH. |
-| PDU Jambangan | perkiraan (area Jambangan Kebon Agung) | Pusat daur ulang milik pemerintah; belum pasti menerima setoran warga dari luar Jambangan. |
-| Super Depo Sutorejo (TPS3R) | perkiraan (Jl. Sutorejo) | Terutama mengolah sampah warga sekitar; cek apakah menerima setoran langsung. |
-| Bank Sampah Bintang Mangrove | perkiraan (tengah kelurahan Gunung Anyar Tambak) | Berita 2020; perlu dipastikan masih aktif. |
-| Drop box plastik Taman Bungkul, Taman Apsari, Taman Harmoni | tepat (titik taman, OpenStreetMap) | Program PLN + DLH + Bank Sampah Induk (Juli–Oktober 2025). Pastikan drop box masih ada dan posisinya di dalam taman. |
+| Bank sampah induk (Menur, Kantor DLH, Sukomanunggal) | 3 | Menur buka Senin–Sabtu. Titik Menur dan Sukomanunggal perkiraan (di jalannya). |
+| Bank sampah unit (RT/RW) | 13 | Dari direktori dan berita 2019–2023. Banyak yang mungkin khusus warga sekitar. Beberapa titik hanya di tengah kelurahan. |
+| TPS3R & pusat daur ulang | 12 | Nama dari Keputusan Wali Kota 2025. Titik kebanyakan di tengah kelurahan. TPS3R terutama mengolah sampah yang diangkut petugas. |
+| Drop box plastik PLN di taman | 4 | Bungkul, Apsari, Harmoni, Sejarah (Juli–Oktober 2025). |
+| Waste station Rekosistem | 3 | Info 2021, bisa saja sudah tutup. |
+| Pos tukar botol Suroboyo Bus | 5 | Botol ditukar tiket bus; aturan dan lokasinya pernah berubah (2022–2023). |
 
-Setelah sebuah tempat dicek: perbaiki datanya, ganti `"terverifikasi"` menjadi
-`true`, dan label "Belum dicek" otomatis hilang. Kalau koordinatnya sudah tepat,
-kolom `tujuan_gmaps` boleh dihapus.
+Lokasi yang titiknya perkiraan punya kolom `tujuan_gmaps`, jadi tombol "Rute"
+tetap mencari nama tempatnya di Google Maps. Kalau ada laporan tempat tutup atau
+salah lokasi, perbaiki atau hapus entrinya di `lokasi.json`.
 
 ## Rencana: lokasi kiriman masyarakat (belum dibuat)
 

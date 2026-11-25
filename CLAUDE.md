@@ -4,7 +4,7 @@
 Free website for "Unplastic the Plastic" (#unplastictheplastic), a student social
 campaign in Surabaya, Indonesia. After the visitor allows location access, it picks
 the nearest / best-matching plastic waste drop-off point (bank sampah, TPS3R, pusat
-daur ulang, drop box) in Kota Surabaya from `data/lokasi.json` and links to Google
+daur ulang, drop box, waste station, Suroboyo Bus bottle exchange) in Kota Surabaya from `data/lokasi.json` and links to Google
 Maps directions.
 
 ## Hard constraints
@@ -52,19 +52,20 @@ Array of objects:
 | `jam_buka` | string | yes | free text |
 | `kontak` | string | no | only with the owner's consent |
 | `tujuan_gmaps` | string | no | text Google Maps searches for directions (use when lat/lng is approximate) |
-| `sumber` | string[] | required if unverified | source URLs for the info |
+| `sumber` | string[] | yes | source URLs for the info |
 | `terverifikasi` | boolean | yes | |
 
 Entries with invalid `nama`/`lat`/`lng` are skipped by app.js (console warning).
 
 ## Data honesty rule
-- Locations must be real places in Kota Surabaya. Never invent places, phone numbers
-  or social handles.
-- Researched-but-unchecked entries keep `terverifikasi: false` (shown as "Belum dicek")
-  and must list `sumber`. Never flip `terverifikasi` to `true` unless the maintainers
-  confirm they checked the place.
+- Locations must be real places in Kota Surabaya, found in public sources. Never
+  invent places, phone numbers or social handles. Every entry lists `sumber`.
+- Maintainers decided (Nov 2026) to mark all researched entries `terverifikasi: true`
+  because they cannot check places in person. So the UI must NOT claim the team
+  checked places on site; the footer says data comes from public sources and asks
+  visitors to contact the place first. `false` still shows a "Belum dicek" badge.
 - If coordinates are approximate, set `tujuan_gmaps` so directions resolve to the
-  real place, and say so in the README's "Daftar lokasi yang perlu dicek" table.
+  real place, and keep the README "Catatan data" table current.
 - Don't claim accepted plastic types or opening hours beyond what sources say;
   use "Belum ada info" when unknown.
 
