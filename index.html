@@ -2,10 +2,14 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zero Plastic – Cari Tempat Setor Sampah Plastik Terdekat</title>
-  <meta name="description" content="Temukan bank sampah, TPS3R, atau pengepul plastik terdekat dari lokasimu. Kampanye Zero Plastic.">
-  <meta name="theme-color" content="#1f8a4c">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Unplastic the Plastic – Tempat Setor Sampah Plastik di Surabaya</title>
+  <meta name="description" content="#unplastictheplastic – temukan bank sampah, TPS3R, dan drop box plastik terdekat di Surabaya, lengkap dengan rute.">
+  <meta name="theme-color" content="#0b3d2e">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 
   <!-- Leaflet (peta) dari CDN. Jangan ubah versi tanpa memperbarui integrity. -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -13,44 +17,44 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="kepala">
-    <h1>♻️ Zero Plastic</h1>
-    <p>Cari tempat setor sampah plastik terdekat</p>
+  <header class="hero">
+    <div class="hero-isi">
+      <span class="tagar">#unplastictheplastic</span>
+      <h1><em>Unplastic</em> the Plastic</h1>
+      <p class="hero-sub">Temukan tempat setor sampah plastik terdekat di Surabaya, lengkap dengan rutenya.</p>
+      <button type="button" id="tombol-cari" class="tombol-utama">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <span>Cari tempat terdekat</span>
+      </button>
+      <p class="privasi">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        Lokasimu hanya diproses di perangkatmu dan tidak disimpan.
+      </p>
+    </div>
   </header>
 
-  <main>
-    <section class="kotak" id="awal">
-      <p>
-        Punya botol, gelas, atau kresek bekas? Jangan dibuang begitu saja!
-        Situs ini mencarikan <strong>bank sampah, TPS3R, atau pengepul</strong>
-        terdekat yang menerima sampah plastikmu, lengkap dengan petunjuk arah.
-      </p>
-      <button type="button" id="tombol-cari" class="tombol-utama">📍 Cari tempat terdekat</button>
-      <p class="catatan">🔒 Lokasimu hanya diproses di browser ini dan <strong>tidak pernah disimpan</strong> atau dikirim ke mana pun.</p>
-    </section>
-
+  <main id="area-hasil" hidden>
     <p id="status" class="status" role="status" aria-live="polite"></p>
 
-    <section id="area-hasil" hidden>
-      <div class="kotak">
-        <h2 class="judul-kecil">Jenis plastik yang mau kamu setor <span class="opsional">(opsional)</span></h2>
-        <div id="filter" class="chips" role="group" aria-label="Filter jenis plastik"></div>
-      </div>
+    <section class="saring" aria-labelledby="judul-saring">
+      <h2 id="judul-saring" class="label-kecil">Mau setor plastik apa?</h2>
+      <div id="filter" class="chips" role="group" aria-label="Filter jenis plastik"></div>
+    </section>
 
+    <div id="peringatan" class="peringatan" hidden></div>
+
+    <ol id="daftar" class="daftar" aria-label="Tempat terdekat"></ol>
+
+    <section class="bingkai-peta">
       <div id="peta" class="peta" aria-label="Peta lokasi"></div>
-      <p id="petunjuk-peta" class="petunjuk-peta">Lokasi kurang tepat? Ketuk peta untuk menandai posisimu.</p>
-
-      <div id="peringatan" class="peringatan" hidden></div>
-
-      <h2 id="judul-hasil" class="judul-hasil" hidden>Tempat terdekat untukmu</h2>
-      <ol id="daftar" class="daftar"></ol>
+      <p id="petunjuk-peta" class="petunjuk-peta">Ketuk peta untuk memindahkan titik posisimu.</p>
     </section>
   </main>
 
   <footer class="kaki">
+    <p class="kaki-merek"><em>Unplastic</em> the Plastic</p>
     <p id="info-data"></p>
-    <p>Jarak dihitung dalam garis lurus, jarak tempuh sebenarnya bisa lebih jauh. Selalu cek jam buka sebelum datang.</p>
-    <p>Kampanye sosial pelajar <strong>Zero Plastic</strong> 💚</p>
+    <p>Jarak dihitung garis lurus. Cek jam buka sebelum datang.</p>
   </footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
