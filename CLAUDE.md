@@ -1,17 +1,24 @@
-# CLAUDE.md – Zero Plastic (zero-plastic)
+# CLAUDE.md – Unplastic the Plastic (repo: zero-plastic)
 
 ## Goal
-Free website for "Zero Plastic", a student social campaign in Indonesia. After the
-visitor allows location access, it picks the nearest / best-matching plastic waste
-drop-off point (bank sampah, TPS3R, pengepul) from `data/lokasi.json` and links to
-Google Maps directions.
+Free website for "Unplastic the Plastic" (#unplastictheplastic), a student social
+campaign in Surabaya, Indonesia. After the visitor allows location access, it picks
+the nearest / best-matching plastic waste drop-off point (bank sampah, TPS3R, pusat
+daur ulang, drop box) in Kota Surabaya from `data/lokasi.json` and links to Google
+Maps directions.
 
 ## Hard constraints
 - Static site only, hosted on GitHub Pages (served under the `/zero-plastic/` subpath).
   No server, no backend, no build step.
 - No paid APIs and no API keys in the code (the repo is public).
-- Map: Leaflet + OpenStreetMap tiles, loaded from a CDN (unpkg, pinned version with
-  SRI `integrity`; update the hash if the version changes).
+- Map: Leaflet loaded from a CDN (unpkg, pinned version with SRI `integrity`; update
+  the hash if the version changes). Basemaps in `GAYA_PETA` (app.js) must work without
+  an API key: OSM standard (default) and Esri Canvas light/dark + World Imagery.
+  CARTO basemaps now return "API KEY REQUIRED" – don't use them. Google Maps tiles
+  need a key/billing – only link out to Google Maps, never embed it.
+- Fonts: Fraunces (serif display) + Plus Jakarta Sans via Google Fonts, with system fallbacks.
+- Design: clean and elegant (deep green gradient, gold accent, ivory background,
+  SVG line icons). Avoid emoji in the UI and avoid adding non-essential sections.
 - All UI text in Bahasa Indonesia. Mobile-first: most visitors come from Instagram on phones.
   Must work at ~375px width with no horizontal scroll.
 - Plain HTML/CSS/JS, no framework. Keep it easy for non-developers to maintain.
@@ -44,24 +51,31 @@ Array of objects:
 | `plastik_diterima` | string[] | yes | e.g. ["PET","HDPE","PP","kresek","sachet","styrofoam"]; matched case-insensitively; display labels in `LABEL_PLASTIK` in app.js |
 | `jam_buka` | string | yes | free text |
 | `kontak` | string | no | only with the owner's consent |
+| `tujuan_gmaps` | string | no | text Google Maps searches for directions (use when lat/lng is approximate) |
+| `sumber` | string[] | required if unverified | source URLs for the info |
 | `terverifikasi` | boolean | yes | |
 
 Entries with invalid `nama`/`lat`/`lng` are skipped by app.js (console warning).
 
-## Placeholder data rule
-Placeholder data MUST stay clearly labelled until replaced with verified data:
-- `nama` starts with `[CONTOH]` and `terverifikasi` is `false`.
-- Do not invent real business names, phone numbers or social handles. Use generic
-  names ("Titik 1 (area Gubeng)") and `example.com` for dummy contacts.
-- Never flip `terverifikasi` to `true` or drop the `[CONTOH]` prefix unless the
-  maintainers supply verified real data.
+## Data honesty rule
+- Locations must be real places in Kota Surabaya. Never invent places, phone numbers
+  or social handles.
+- Researched-but-unchecked entries keep `terverifikasi: false` (shown as "Belum dicek")
+  and must list `sumber`. Never flip `terverifikasi` to `true` unless the maintainers
+  confirm they checked the place.
+- If coordinates are approximate, set `tujuan_gmaps` so directions resolve to the
+  real place, and say so in the README's "Daftar lokasi yang perlu dicek" table.
+- Don't claim accepted plastic types or opening hours beyond what sources say;
+  use "Belum ada info" when unknown.
 
 ## Behaviour notes
 - Ranking: optional plastic filter first, then haversine (straight-line) distance; top 3 shown.
 - Nearest result > 25 km (`PENGATURAN.batasJauhKm`) → honest warning + Google Maps
   "bank sampah" search fallback. Same fallback when a filter yields no results.
 - Geolocation denied/unavailable → map centred on Surabaya; tapping the map sets the position.
-- Directions link: `https://www.google.com/maps/dir/?api=1&destination=LAT,LNG` (new tab).
+- Directions link: `https://www.google.com/maps/dir/?api=1&destination=LAT,LNG`, or
+  `destination=<tujuan_gmaps>` when that field is set (new tab).
+- Map style choice is remembered per visitor in localStorage (wrapped in try/catch).
 - Render data via `textContent` / DOM nodes, never `innerHTML` with data values.
 
 ## Out of scope (for now)
