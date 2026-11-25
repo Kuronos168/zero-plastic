@@ -1,113 +1,122 @@
 [
   {
-    "id": "contoh-01",
-    "nama": "[CONTOH] Bank Sampah Titik 1 (area Gubeng)",
-    "lat": -7.2756,
-    "lng": 112.7508,
-    "alamat": "Alamat contoh, area Gubeng, Surabaya",
+    "id": "bsis-menur",
+    "nama": "Bank Sampah Induk Surabaya",
+    "lat": -7.2803,
+    "lng": 112.7625,
+    "alamat": "Jl. Raya Menur No. 31-A, Manyar Sabrangan, Mulyorejo, Surabaya 60116",
     "jenis": "bank sampah",
-    "plastik_diterima": ["PET", "HDPE", "PP", "kresek"],
-    "jam_buka": "Sabtu 08.00–11.00 (contoh)",
-    "kontak": "contoh@example.com",
+    "plastik_diterima": ["PET", "HDPE", "PP"],
+    "jam_buka": "Belum ada info pasti, biasanya ramai hari Sabtu",
+    "tujuan_gmaps": "Bank Sampah Induk Surabaya, Jl. Raya Menur No. 31-A, Surabaya",
+    "sumber": [
+      "https://banksampahinduksurabaya.id/",
+      "https://www.detik.com/jatim/berita/d-6929783/sampah-bisa-ditukar-jadi-uang-di-surabaya-gimana-caranya"
+    ],
     "terverifikasi": false
   },
   {
-    "id": "contoh-02",
-    "nama": "[CONTOH] Bank Sampah Titik 2 (area Tegalsari)",
-    "lat": -7.2681,
-    "lng": 112.7361,
-    "alamat": "Alamat contoh, area Tegalsari, Surabaya",
+    "id": "dlh-jimerto",
+    "nama": "Bank Sampah Induk – Kantor DLH Surabaya",
+    "lat": -7.257694,
+    "lng": 112.747481,
+    "alamat": "Jl. Jimerto No. 25-27, Ketabang, Genteng, Surabaya 60272",
     "jenis": "bank sampah",
-    "plastik_diterima": ["PET", "HDPE"],
-    "jam_buka": "Minggu 07.00–10.00 (contoh)",
+    "plastik_diterima": ["PET", "HDPE", "PP"],
+    "jam_buka": "Senin–Kamis 08.00–16.00, Jumat 08.00–15.00 (jam kantor)",
+    "tujuan_gmaps": "Dinas Lingkungan Hidup Kota Surabaya, Jl. Jimerto 25-27, Surabaya",
+    "sumber": [
+      "https://surabaya.go.id/id/berita/25154/harga-plastik-naik-dlh-surabaya-ajak-warga-raup-cuan-lewat-pilah-sampah-dari-rumah",
+      "https://www.openstreetmap.org/node/12759310876"
+    ],
     "terverifikasi": false
   },
   {
-    "id": "contoh-03",
-    "nama": "[CONTOH] TPS3R Titik 3 (area Rungkut)",
+    "id": "pdu-jambangan",
+    "nama": "Pusat Daur Ulang (PDU) Jambangan",
     "lat": -7.3195,
-    "lng": 112.7802,
-    "alamat": "Alamat contoh, area Rungkut, Surabaya",
-    "jenis": "TPS3R",
-    "plastik_diterima": ["PET", "HDPE", "PP", "kresek", "sachet", "styrofoam"],
-    "jam_buka": "Senin–Jumat 08.00–15.00 (contoh)",
+    "lng": 112.7150,
+    "alamat": "Jl. Jambangan Kebon Agung, Jambangan, Surabaya",
+    "jenis": "pusat daur ulang",
+    "plastik_diterima": ["PET", "PP", "kresek"],
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "PDU Jambangan, Surabaya",
+    "sumber": [
+      "https://www.kemenlh.go.id/news/detail/dari-sampah-mereka-menjaga-napas-kota-kisah-para-pekerja-dan-warga-di-balik-pdu-jambangan-surabaya",
+      "https://www.suarasurabaya.net/senggang/2018/PDU-Jambangan-Sarana-Edukatif-Mengenal-Pengelolaan-Sampah/"
+    ],
     "terverifikasi": false
   },
   {
-    "id": "contoh-04",
-    "nama": "[CONTOH] Pengepul Titik 4 (area Wonokromo)",
-    "lat": -7.3010,
-    "lng": 112.7365,
-    "alamat": "Alamat contoh, area Wonokromo, Surabaya",
-    "jenis": "pengepul",
+    "id": "superdepo-sutorejo",
+    "nama": "Super Depo Sutorejo (TPS3R)",
+    "lat": -7.2615,
+    "lng": 112.7879,
+    "alamat": "Jl. Sutorejo, Dukuh Sutorejo, Mulyorejo, Surabaya",
+    "jenis": "TPS3R",
     "plastik_diterima": ["PET", "HDPE", "PP"],
-    "jam_buka": "Setiap hari 08.00–16.00 (contoh)",
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Super Depo Sutorejo, Surabaya",
+    "sumber": [
+      "https://jawapos.com/surabaya-raya/2203170176/super-depo-sutorejo-wujud-nyata-kerja-sama-surabaya-dengan-kitakyushu"
+    ],
     "terverifikasi": false
   },
   {
-    "id": "contoh-05",
-    "nama": "[CONTOH] Bank Sampah Titik 5 (area Kenjeran)",
-    "lat": -7.2340,
-    "lng": 112.7765,
-    "alamat": "Alamat contoh, area Kenjeran, Surabaya",
-    "jenis": "bank sampah",
-    "plastik_diterima": ["PET", "kresek", "sachet"],
-    "jam_buka": "Rabu & Sabtu 15.00–17.00 (contoh)",
-    "terverifikasi": false
-  },
-  {
-    "id": "contoh-06",
-    "nama": "[CONTOH] TPS3R Titik 6 (area Benowo)",
-    "lat": -7.2405,
-    "lng": 112.6430,
-    "alamat": "Alamat contoh, area Benowo, Surabaya",
-    "jenis": "TPS3R",
-    "plastik_diterima": ["PET", "HDPE", "PP", "kresek"],
-    "jam_buka": "Senin–Sabtu 07.00–14.00 (contoh)",
-    "terverifikasi": false
-  },
-  {
-    "id": "contoh-07",
-    "nama": "[CONTOH] Bank Sampah Titik 7 (area Lakarsantri)",
-    "lat": -7.3100,
-    "lng": 112.6560,
-    "alamat": "Alamat contoh, area Lakarsantri, Surabaya",
+    "id": "bs-bintang-mangrove",
+    "nama": "Bank Sampah Bintang Mangrove",
+    "lat": -7.3398,
+    "lng": 112.8113,
+    "alamat": "Kawasan Mangrove Gang 3, Gunung Anyar Tambak, Gunung Anyar, Surabaya",
     "jenis": "bank sampah",
     "plastik_diterima": ["PET", "HDPE", "PP"],
-    "jam_buka": "Minggu 08.00–11.00 (contoh)",
+    "jam_buka": "Belum ada info",
+    "tujuan_gmaps": "Bank Sampah Bintang Mangrove, Gunung Anyar Tambak, Surabaya",
+    "sumber": [
+      "https://www.jawapos.com/surabaya/26/11/2020/bank-sampah-bintang-mangrove-bintang-kehidupan-perekonomian-warga/"
+    ],
     "terverifikasi": false
   },
   {
-    "id": "contoh-08",
-    "nama": "[CONTOH] Bank Sampah Titik 8 (area Waru, Sidoarjo)",
-    "lat": -7.3540,
-    "lng": 112.7240,
-    "alamat": "Alamat contoh, area Waru, Sidoarjo",
-    "jenis": "bank sampah",
-    "plastik_diterima": ["PET", "HDPE", "kresek"],
-    "jam_buka": "Sabtu 09.00–12.00 (contoh)",
+    "id": "dropbox-bungkul",
+    "nama": "Drop Box Plastik Taman Bungkul",
+    "lat": -7.291225,
+    "lng": 112.739872,
+    "alamat": "Taman Bungkul, Jl. Raya Darmo, Darmo, Wonokromo, Surabaya",
+    "jenis": "drop box",
+    "plastik_diterima": ["PET", "PP"],
+    "jam_buka": "Mengikuti jam buka taman",
+    "sumber": [
+      "https://headlinejatim.com/2025/10/21/pln-dorong-aksi-pelestarian-lingkungan-sambut-momen-hari-sumpah-pemuda/"
+    ],
     "terverifikasi": false
   },
   {
-    "id": "contoh-09",
-    "nama": "[CONTOH] TPS3R Titik 9 (area Sidoarjo Kota)",
-    "lat": -7.4470,
-    "lng": 112.7180,
-    "alamat": "Alamat contoh, area Sidoarjo Kota, Sidoarjo",
-    "jenis": "TPS3R",
-    "plastik_diterima": ["PET", "HDPE", "PP", "kresek", "sachet"],
-    "jam_buka": "Senin–Jumat 08.00–15.00 (contoh)",
+    "id": "dropbox-apsari",
+    "nama": "Drop Box Plastik Taman Apsari",
+    "lat": -7.263799,
+    "lng": 112.742786,
+    "alamat": "Taman Apsari, Jl. Gubernur Suryo, Embong Kaliasin, Genteng, Surabaya",
+    "jenis": "drop box",
+    "plastik_diterima": ["PET", "PP"],
+    "jam_buka": "Mengikuti jam buka taman",
+    "sumber": [
+      "https://headlinejatim.com/2025/10/21/pln-dorong-aksi-pelestarian-lingkungan-sambut-momen-hari-sumpah-pemuda/"
+    ],
     "terverifikasi": false
   },
   {
-    "id": "contoh-10",
-    "nama": "[CONTOH] Pengepul Titik 10 (area Candi, Sidoarjo)",
-    "lat": -7.4900,
-    "lng": 112.7050,
-    "alamat": "Alamat contoh, area Candi, Sidoarjo",
-    "jenis": "pengepul",
-    "plastik_diterima": ["PET", "HDPE", "PP", "styrofoam"],
-    "jam_buka": "Setiap hari 08.00–17.00 (contoh)",
+    "id": "dropbox-harmoni",
+    "nama": "Drop Box Plastik Taman Harmoni",
+    "lat": -7.295047,
+    "lng": 112.803603,
+    "alamat": "Taman Harmoni, Keputih, Sukolilo, Surabaya",
+    "jenis": "drop box",
+    "plastik_diterima": ["PET", "PP"],
+    "jam_buka": "Setiap hari 06.00–18.00 (jam buka taman)",
+    "sumber": [
+      "https://headlinejatim.com/2025/10/21/pln-dorong-aksi-pelestarian-lingkungan-sambut-momen-hari-sumpah-pemuda/"
+    ],
     "terverifikasi": false
   }
 ]
